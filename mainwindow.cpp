@@ -3,6 +3,8 @@
 
 #include "QSqlQueryModel"
 
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -25,6 +27,11 @@ void MainWindow::refreshStatus()
     ui->tableView->setModel(model);
 }
 
+void MainWindow::refTable(QSqlQueryModel *m)
+{
+    ui->tableView->setModel(m);
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -43,9 +50,11 @@ void MainWindow::on_pushButton_clicked()
     {
         ui->statusBar->showMessage("Udane polaczenie z baza danych");
     }
-
-        trzymacz->prepare("SELECT NRDZIENNIKA as Lp, IMIE as Imię, NAZWISKO FROM UCZNIOWIE");
-        refreshStatus();
+//        trzymacz->prepare("SELECT NRDZIENNIKA as Lp, IMIE as Imię, NAZWISKO FROM UCZNIOWIE");
+//        refreshStatus();
+    testquest::testQuery(model,trzymacz);
+    trzymacz->exec();
+    ui->tableView->setModel(model);
 }
 
 void MainWindow::on_actionLista_Pracownik_w_triggered()

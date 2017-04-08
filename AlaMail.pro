@@ -14,8 +14,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    testquest.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    testquest.h
 
 FORMS    += mainwindow.ui

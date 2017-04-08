@@ -8,11 +8,13 @@
 #include <QString>
 #include <QSqlQueryModel>
 
+#include "testquest.h"
+
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public testquest
 {
     Q_OBJECT
 
@@ -25,6 +27,7 @@ public:
     QSqlQuery *trzymacz;
 
     void refreshStatus();
+    void refTable(QSqlQueryModel *m);
 
     ~MainWindow();
 
