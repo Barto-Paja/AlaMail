@@ -14,10 +14,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    testquest.cpp
+        mainwindow.cpp
 
-HEADERS  += mainwindow.h \
-    testquest.h
+HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    zasoby.qrc

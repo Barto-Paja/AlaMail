@@ -8,13 +8,11 @@
 #include <QString>
 #include <QSqlQueryModel>
 
-#include "testquest.h"
-
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow, public testquest
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -22,20 +20,16 @@ public:
     explicit MainWindow(QWidget *parent = 0);
 
     QSqlDatabase db;
-
-    QSqlQueryModel *model;
-    QSqlQuery *trzymacz;
-
-    void refreshStatus();
-    void refTable(QSqlQueryModel *m);
+    QSqlQuery *q;
+    QSqlQueryModel *m;
 
     ~MainWindow();
 
 private slots:
+
     void on_pushButton_clicked();
 
-    void on_actionLista_Pracownik_w_triggered();
-    void on_actionLista_Uczni_w_triggered();
+    void on_actionKompletna_Lista_Uczni_w_triggered();
 
 private:
     Ui::MainWindow *ui;

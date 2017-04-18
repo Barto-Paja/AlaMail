@@ -1,10 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "QSqlQueryModel"
-
-
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -15,58 +11,45 @@ MainWindow::MainWindow(QWidget *parent) :
     db.setHostName("localhost");
     db.setDatabaseName("XE");
 
-    model = new QSqlQueryModel();
-    trzymacz = new QSqlQuery();
+    q = new QSqlQuery(db);
+    m = new QSqlQueryModel();
 
-}
-
-void MainWindow::refreshStatus()
-{
-    trzymacz->exec();
-    model->setQuery(*trzymacz);
-    ui->tableView->setModel(model);
-}
-
-void MainWindow::refTable(QSqlQueryModel *m)
-{
-    ui->tableView->setModel(m);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 void MainWindow::on_pushButton_clicked()
 {
-    db.setUserName(ui->lineEdit->text());
-    db.setPassword(ui->lineEdit_2->text());
+   db.setUserName(ui->lineEdit->text());
+   db.setPassword(ui->lineEdit_2->text());
 
-    if(!db.open())
+   if(!db.open())
+   {
+       ui->statusBar->showMessage("Nieudana próba otwarcia bazy danych");
+   }
+   else
+   {
+       ui->statusBar->showMessage("Połączenie pomyślne");
+   }
+   db.close();
+}
+
+
+void MainWindow::on_actionKompletna_Lista_Uczni_w_triggered()
+{
+    if(db.open())
     {
-        ui->statusBar->showMessage("Nieudane polaczenie z baza danych");
+    q->prepare("select IMIE, NAZWISKO, DATA_URODZENIA, MIASTO, \
+ULICA, KOD_POCZTOWY, IMIE_MATKI, TELEFON_MATKI, IMIE_OJCA, TELEFON_OJCA, ID_GRUPY from UCZNIOWIE");
+    q->exec();
+    m->setQuery(*q);
+    ui->tableView->setModel(m);
+    db.close();
     }
     else
     {
-        ui->statusBar->showMessage("Udane polaczenie z baza danych");
+        ui->statusBar->showMessage("Nieudane połączenie");
     }
-//        trzymacz->prepare("SELECT NRDZIENNIKA as Lp, IMIE as Imię, NAZWISKO FROM UCZNIOWIE");
-//        refreshStatus();
-    testquest::testQuery(model,trzymacz);
-    trzymacz->exec();
-    ui->tableView->setModel(model);
-}
-
-void MainWindow::on_actionLista_Pracownik_w_triggered()
-{
-    trzymacz->prepare("select IMIE, NAZWISKO, STANOWISKAM.TYTUL as Stanowisko FROM NAUCZYCIELE INNER JOIN STANOWISKAM ON STANOWISKAM.ID_STANOWISKA = NAUCZYCIELE.ID_STANOWISKA");
-    refreshStatus();
-}
-
-void MainWindow::on_actionLista_Uczni_w_triggered()
-{
-    trzymacz->prepare("SELECT IMIE , NAZWISKO FROM UCZNIOWIE");
-    refreshStatus();
-    model->setHeaderData(0,Qt::Horizontal,tr("Imię"));
-    model->setHeaderData(1,Qt::Horizontal,tr("Nazwisko"));
 }
