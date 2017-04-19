@@ -41,12 +41,9 @@ void MainWindow::on_actionKompletna_Lista_Uczni_w_triggered()
 {
     if(db.open())
     {
-    q->prepare("select IMIE, NAZWISKO, DATA_URODZENIA, MIASTO, \
-ULICA, KOD_POCZTOWY, IMIE_MATKI, TELEFON_MATKI, IMIE_OJCA, TELEFON_OJCA, ID_GRUPY from UCZNIOWIE");
-    q->exec();
-    m->setQuery(*q);
-    ui->tableView->setModel(m);
-    db.close();
+        QueryBank::QUczniowie(q,m);
+        ui->tableView->setModel(m);
+        db.close();
     }
     else
     {

@@ -8,11 +8,13 @@
 #include <QString>
 #include <QSqlQueryModel>
 
+#include "querybank.h"
+
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public QueryBank
 {
     Q_OBJECT
 

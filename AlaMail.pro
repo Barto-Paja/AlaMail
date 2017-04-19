@@ -14,9 +14,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    querybank.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    querybank.h
 
 FORMS    += mainwindow.ui
 
