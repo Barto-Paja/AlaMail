@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
     q = new QSqlQuery(db);
     m = new QSqlQueryModel();
 
+    form = new F_DodajUcznia(this);
+
 }
 
 MainWindow::~MainWindow()
@@ -49,4 +51,26 @@ void MainWindow::on_actionKompletna_Lista_Uczni_w_triggered()
     {
         ui->statusBar->showMessage("Nieudane połączenie");
     }
+}
+
+void MainWindow::on_actionPodgl_d_Klasy_triggered()
+{
+    QString txt = QInputDialog::getText(this,QString("Wybór klasy"),QString("Podaj nazwę klasy:"));
+
+    if(db.open())
+    {
+        QueryBank::QUczniowieGrupy(q,m, txt);
+        ui->tableView->setModel(m);
+        db.close();
+    }
+    else
+    {
+        ui->statusBar->showMessage("Nieudane połączenie");
+    }
+}
+
+void MainWindow::on_actionDodaj_ucznia_triggered()
+{
+    form->setModal(true);
+    form->exec();
 }

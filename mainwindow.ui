@@ -142,6 +142,9 @@
       <string>Uczniowie</string>
      </property>
      <addaction name="actionKompletna_Lista_Uczni_w"/>
+     <addaction name="actionPodgl_d_Klasy"/>
+     <addaction name="separator"/>
+     <addaction name="actionDodaj_ucznia"/>
     </widget>
     <widget class="QMenu" name="menuAdministracyjne">
      <property name="title">
@@ -170,6 +173,16 @@
   <action name="actionSpis_Grup_w_Plac_wce">
    <property name="text">
     <string>Spis Grup w Placówce</string>
+   </property>
+  </action>
+  <action name="actionPodgl_d_Klasy">
+   <property name="text">
+    <string>Podgląd Klasy</string>
+   </property>
+  </action>
+  <action name="actionDodaj_ucznia">
+   <property name="text">
+    <string>Dodaj ucznia</string>
    </property>
   </action>
  </widget>

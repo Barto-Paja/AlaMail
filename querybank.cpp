@@ -28,3 +28,18 @@ void QueryBank::QUczniowie(QSqlQuery *q, QSqlQueryModel *m)
     m->setHeaderData(9,Qt::Horizontal,("Tel. do ojca"));
     m->setHeaderData(10,Qt::Horizontal,("Klasa"));
 }
+
+void QueryBank::QUczniowieGrupy(QSqlQuery *q, QSqlQueryModel *m, QString &kl)
+{
+
+    q->prepare("select IMIE,NAZWISKO, GRUPY.NAZWA_GRUPY from UCZNIOWIE inner join GRUPY on UCZNIOWIE.ID_GRUPY = GRUPY.ID_GRUPY\
+             where GRUPY.NAZWA_GRUPY like ? ");
+
+    q->addBindValue(kl);
+    q->exec();
+    m->setQuery(*q);
+
+    m->setHeaderData(0,Qt::Horizontal,("Imię"));
+    m->setHeaderData(1,Qt::Horizontal,("Nazwisko"));
+    m->setHeaderData(2,Qt::Horizontal,("Klasa"));
+}

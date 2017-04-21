@@ -8,7 +8,13 @@
 #include <QString>
 #include <QSqlQueryModel>
 
+#include <QMessageBox>
+#include <QInputDialog>
+
 #include "querybank.h"
+
+#include "f_dodajucznia.h"
+#include "mainwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +31,8 @@ public:
     QSqlQuery *q;
     QSqlQueryModel *m;
 
+    F_DodajUcznia *form;
+
     ~MainWindow();
 
 private slots:
@@ -32,6 +40,8 @@ private slots:
     void on_pushButton_clicked();
 
     void on_actionKompletna_Lista_Uczni_w_triggered();
+    void on_actionPodgl_d_Klasy_triggered();
+    void on_actionDodaj_ucznia_triggered();
 
 private:
     Ui::MainWindow *ui;
