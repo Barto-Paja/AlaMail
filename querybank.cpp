@@ -7,7 +7,8 @@ QueryBank::QueryBank()
 
 void QueryBank::QUczniowie(QSqlQuery *q, QSqlQueryModel *m)
 {
-    q->prepare("select IMIE, NAZWISKO, DATA_URODZENIA, MIASTO, \
+    q->prepare("select * from UCZNIOWIE");
+    //q->prepare("select IMIE, NAZWISKO, DATA_URODZENIA, MIASTO, \
                ULICA, KOD_POCZTOWY, IMIE_MATKI, TELEFON_MATKI, \
                 IMIE_OJCA, TELEFON_OJCA, GRUPY.NAZWA_GRUPY from UCZNIOWIE inner join GRUPY on\
                 UCZNIOWIE.ID_GRUPY = GRUPY.ID_GRUPY ");

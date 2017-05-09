@@ -16,14 +16,17 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     querybank.cpp \
-    f_dodajucznia.cpp
+    f_dodajucznia.cpp \
+    f_dodajnauczyciela.cpp
 
 HEADERS  += mainwindow.h \
     querybank.h \
-    f_dodajucznia.h
+    f_dodajucznia.h \
+    f_dodajnauczyciela.h
 
 FORMS    += mainwindow.ui \
-    f_dodajucznia.ui
+    f_dodajucznia.ui \
+    f_dodajnauczyciela.ui
 
 RESOURCES += \
     zasoby.qrc

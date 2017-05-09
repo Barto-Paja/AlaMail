@@ -1,6 +1,8 @@
 #include "f_dodajucznia.h"
 #include "ui_f_dodajucznia.h"
 
+#include <QSqlError>
+
 F_DodajUcznia::F_DodajUcznia(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::F_DodajUcznia)
@@ -76,20 +78,44 @@ void F_DodajUcznia::czyPelne()
         msgBox.exec();
     }
     else {
-        QSqlQuery q;
-        q.prepare("insert into UCZNIOWIE (IMIE,NAZWISKO,DATA_URODZENIA,MIASTO,ULICA,KOD_POCZTOWY,IMIE_MATKI,TELEFON_MATKI,IMIE_OJCA,TELEFON_OJCA,ID_GRUPY) values\
-(?,?,?,?,?,?,?,?,?,?)");
-        q.addBindValue(QString(ui->lineEdit->text()));
-        q.addBindValue(QString(ui->lineEdit_2->text()));
-        q.addBindValue(QString(ui->lineEdit_3->text()));
-        q.addBindValue(QString(ui->lineEdit_4->text()));
-        q.addBindValue(QString(ui->lineEdit_5->text()));
-        q.addBindValue(QString(ui->lineEdit_6->text()));
-        q.addBindValue(QString(ui->lineEdit_7->text()));
-        q.addBindValue(QString(ui->lineEdit_8->text()));
-        q.addBindValue(QString(ui->lineEdit_9->text()));
-        q.addBindValue(QString(ui->lineEdit_10->text()));
 
-        emit send(q);
+      QSqlDatabase db = QSqlDatabase::database();
+      if(db.open())
+      {
+          QSqlQuery q(db);
+
+          q.prepare("insert into UCZNIOWIE values(:id, :imie, :nazwisko, :miasto, :ulica, :kp, :imM, :telM, :imO, :telO, :idg)");
+          q.bindValue(":id",' ');
+          q.bindValue(":imie",QString(ui->lineEdit->text()));
+          q.bindValue(":nazwisko",QString(ui->lineEdit_2->text()));
+          q.bindValue(":miasto",QString(ui->lineEdit_4->text()));
+          q.bindValue(":ulica",QString(ui->lineEdit_5->text()));
+          q.bindValue(":kp",QString(ui->lineEdit_6->text()));
+          q.bindValue(":imM",QString(ui->lineEdit_7->text()));
+          q.bindValue(":telM",QString(ui->lineEdit_8->text()));
+          q.bindValue(":imO",QString(ui->lineEdit_9->text()));
+          q.bindValue(":telO",QString(ui->lineEdit_10->text()));
+          q.bindValue(":idg",1);
+
+          q.exec();
+          if(q.lastError().type() != QSqlError::NoError)
+          {
+          msgBox.setIcon(QMessageBox::Information);
+          msgBox.setText(q.lastError().text());
+          msgBox.exec();
+          }
+          else
+          {
+              msgBox.setText("Dodano nowego Ucznia");
+              msgBox.exec();
+          }
+      }
+      else
+      {
+          msgBox.setIcon(QMessageBox::Critical);
+          msgBox.setText("Nieudane połączenie z bazą danych");
+          msgBox.exec();
+      }
+
     }
 }

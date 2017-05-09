@@ -33,7 +33,11 @@ public:
 
     F_DodajUcznia *form;
 
+    void setQ(QSqlQuery *Q);
+
     ~MainWindow();
+public slots:
+    void odbiorF_DU(QSqlQuery);
 
 private slots:
 

@@ -18,16 +18,26 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+void MainWindow::setQ(QSqlQuery *Q)
+{
+    q = Q;
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::odbiorF_DU(QSqlQuery d)
+{
+    q = &d;
 }
 void MainWindow::on_pushButton_clicked()
 {
    db.setUserName(ui->lineEdit->text());
    db.setPassword(ui->lineEdit_2->text());
 
-   if(!db.open())
+   if(!this->db.open())
    {
        ui->statusBar->showMessage("Nieudana próba otwarcia bazy danych");
    }
@@ -35,7 +45,8 @@ void MainWindow::on_pushButton_clicked()
    {
        ui->statusBar->showMessage("Połączenie pomyślne");
    }
-   db.close();
+   //db.close();
+
 }
 
 
@@ -45,7 +56,6 @@ void MainWindow::on_actionKompletna_Lista_Uczni_w_triggered()
     {
         QueryBank::QUczniowie(q,m);
         ui->tableView->setModel(m);
-        db.close();
     }
     else
     {
@@ -61,7 +71,6 @@ void MainWindow::on_actionPodgl_d_Klasy_triggered()
     {
         QueryBank::QUczniowieGrupy(q,m, txt);
         ui->tableView->setModel(m);
-        db.close();
     }
     else
     {
@@ -73,4 +82,5 @@ void MainWindow::on_actionDodaj_ucznia_triggered()
 {
     form->setModal(true);
     form->exec();
+
 }

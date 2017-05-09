@@ -9,6 +9,7 @@
 
 #include "querybank.h"
 
+
 namespace Ui {
 class F_DodajUcznia;
 }
@@ -20,8 +21,6 @@ class F_DodajUcznia : public QDialog
 public:
     explicit F_DodajUcznia(QWidget *parent = 0);
     ~F_DodajUcznia();
-signals:
-    void send(QSqlQuery);
 
 private slots:
     void on_pushButton_clicked();
