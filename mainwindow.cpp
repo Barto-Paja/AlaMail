@@ -10,77 +10,35 @@ MainWindow::MainWindow(QWidget *parent) :
     db = QSqlDatabase::addDatabase("QOCI");
     db.setHostName("localhost");
     db.setDatabaseName("XE");
+    db.setUserName("******");
+    db.setPassword("******");
 
-    q = new QSqlQuery(db);
-    m = new QSqlQueryModel();
+    if(db.open())
+    {
+        ui->statusBar->showMessage("Połączono z bazą pomyślnie");
+    }
 
-    form = new F_DodajUcznia(this);
-
-}
-
-void MainWindow::setQ(QSqlQuery *Q)
-{
-    q = Q;
 }
 
 MainWindow::~MainWindow()
 {
+    db.close();
     delete ui;
 }
 
-void MainWindow::odbiorF_DU(QSqlQuery d)
-{
-    q = &d;
-}
 void MainWindow::on_pushButton_clicked()
 {
-   db.setUserName(ui->lineEdit->text());
-   db.setPassword(ui->lineEdit_2->text());
+    QSqlQuery q(db);
 
-   if(!this->db.open())
-   {
-       ui->statusBar->showMessage("Nieudana próba otwarcia bazy danych");
-   }
-   else
-   {
-       ui->statusBar->showMessage("Połączenie pomyślne");
-   }
-   //db.close();
+    q.prepare("SELECT * FROM USERS_ALAMAIL WHERE USERNAME ='"+ui->lineEdit->text()+"' AND PASSWORD='"+ui->lineEdit_2->text()+"'");
+    q.exec();
 
-}
-
-
-void MainWindow::on_actionKompletna_Lista_Uczni_w_triggered()
-{
-    if(db.open())
+    if(q.next())
     {
-        QueryBank::QUczniowie(q,m);
-        ui->tableView->setModel(m);
+       ui->statusBar->showMessage("Zalogowano!");
     }
     else
     {
-        ui->statusBar->showMessage("Nieudane połączenie");
+        ui->statusBar->showMessage("Niepoprawny login lub hasło");
     }
-}
-
-void MainWindow::on_actionPodgl_d_Klasy_triggered()
-{
-    QString txt = QInputDialog::getText(this,QString("Wybór klasy"),QString("Podaj nazwę klasy:"));
-
-    if(db.open())
-    {
-        QueryBank::QUczniowieGrupy(q,m, txt);
-        ui->tableView->setModel(m);
-    }
-    else
-    {
-        ui->statusBar->showMessage("Nieudane połączenie");
-    }
-}
-
-void MainWindow::on_actionDodaj_ucznia_triggered()
-{
-    form->setModal(true);
-    form->exec();
-
 }

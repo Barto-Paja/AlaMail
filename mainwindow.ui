@@ -6,64 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>763</width>
-    <height>417</height>
+    <width>556</width>
+    <height>365</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>30</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Połącz</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>10</y>
-      <width>261</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="lineEdit_2">
-       <property name="echoMode">
-        <enum>QLineEdit::Password</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Password:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Login:</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="icon">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -82,12 +33,12 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="title">
     <property name="geometry">
      <rect>
       <x>110</x>
       <y>20</y>
-      <width>241</width>
+      <width>181</width>
       <height>41</height>
      </rect>
     </property>
@@ -107,86 +58,68 @@
      <string>Al'aMail alpha</string>
     </property>
    </widget>
-   <widget class="QTableView" name="tableView">
+   <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>110</y>
-      <width>741</width>
-      <height>271</height>
+      <x>20</x>
+      <y>220</y>
+      <width>201</width>
+      <height>77</height>
      </rect>
     </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Password:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLineEdit" name="lineEdit_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Login:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Zaloguj</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>763</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuMenu">
-    <property name="title">
-     <string>Menu</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuTabele">
-    <property name="title">
-     <string>Listy</string>
-    </property>
-    <widget class="QMenu" name="menuUczniowie">
-     <property name="title">
-      <string>Uczniowie</string>
-     </property>
-     <addaction name="actionKompletna_Lista_Uczni_w"/>
-     <addaction name="actionPodgl_d_Klasy"/>
-     <addaction name="separator"/>
-     <addaction name="actionDodaj_ucznia"/>
-    </widget>
-    <widget class="QMenu" name="menuAdministracyjne">
-     <property name="title">
-      <string>Administracyjne</string>
-     </property>
-     <addaction name="actionSpis_Grup_w_Plac_wce"/>
-    </widget>
-    <addaction name="menuUczniowie"/>
-    <addaction name="actionNauczyciele"/>
-    <addaction name="separator"/>
-    <addaction name="menuAdministracyjne"/>
-   </widget>
-   <addaction name="menuMenu"/>
-   <addaction name="menuTabele"/>
-  </widget>
-  <action name="actionNauczyciele">
-   <property name="text">
-    <string>Nauczyciele</string>
-   </property>
-  </action>
-  <action name="actionKompletna_Lista_Uczni_w">
-   <property name="text">
-    <string>Kompletna Lista Uczniów</string>
-   </property>
-  </action>
-  <action name="actionSpis_Grup_w_Plac_wce">
-   <property name="text">
-    <string>Spis Grup w Placówce</string>
-   </property>
-  </action>
-  <action name="actionPodgl_d_Klasy">
-   <property name="text">
-    <string>Podgląd Klasy</string>
-   </property>
-  </action>
-  <action name="actionDodaj_ucznia">
-   <property name="text">
-    <string>Dodaj ucznia</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
  <resources>
   <include location="zasoby.qrc"/>
  </resources>
