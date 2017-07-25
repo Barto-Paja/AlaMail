@@ -2,42 +2,34 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QString>
-#include <QSqlQueryModel>
-
-#include <QMessageBox>
-#include <QInputDialog>
-
-#include "querybank.h"
 
 #include "mainwindow.h"
+#include "querybank.h"
+#include "profile.h"
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow, public QueryBank
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-public slots:
 
 private slots:
 
-
     void on_pushButton_clicked();
+    void on_Profile_clicked();
 
 private:
     Ui::MainWindow *ui;
 
-    QSqlDatabase db;
-
+    QueryBank *wskQb;
+    Profile *form;
 };
 
 #endif // MAINWINDOW_H

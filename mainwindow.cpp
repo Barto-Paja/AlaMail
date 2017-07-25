@@ -6,39 +6,41 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    wskQb = new QueryBank;
 
-    db = QSqlDatabase::addDatabase("QOCI");
-    db.setHostName("localhost");
-    db.setDatabaseName("XE");
-    db.setUserName("******");
-    db.setPassword("******");
-
-    if(db.open())
-    {
-        ui->statusBar->showMessage("Połączono z bazą pomyślnie");
-    }
-
+    if(wskQb->isOpen())
+        ui->statusBar->showMessage("Połączono z bazą danych");
+    else
+        ui->statusBar->showMessage("Nie połączono z bazą danych");
 }
 
 MainWindow::~MainWindow()
 {
-    db.close();
     delete ui;
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-    QSqlQuery q(db);
+    QString login = ui->lE_Login->text();
+    QString pass = ui->lE_Password->text();
 
-    q.prepare("SELECT * FROM USERS_ALAMAIL WHERE USERNAME ='"+ui->lineEdit->text()+"' AND PASSWORD='"+ui->lineEdit_2->text()+"'");
-    q.exec();
+    wskQb->setLogin(login);
 
-    if(q.next())
+    if(wskQb->Login(login,pass))
     {
-       ui->statusBar->showMessage("Zalogowano!");
+        ui->statusBar->showMessage("Zalogowano pomyślnie!");
+
+        ui->statusBar->showMessage(wskQb->getLogin());
+        ui->lLogin->setText(wskQb->userInfo(4));
+
+        ui->Profile->setEnabled(true);
     }
-    else
-    {
-        ui->statusBar->showMessage("Niepoprawny login lub hasło");
-    }
+
+}
+
+void MainWindow::on_Profile_clicked()
+{
+    wskQb->closeDB();
+    form = new Profile(0,ui->lE_Login->text());
+    form->show();
 }

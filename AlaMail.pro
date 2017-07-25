@@ -15,12 +15,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    querybank.cpp
+    querybank.cpp \
+    profile.cpp
 
 HEADERS  += mainwindow.h \
-    querybank.h
+    querybank.h \
+    profile.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    profile.ui
 
 RESOURCES += \
     zasoby.qrc
