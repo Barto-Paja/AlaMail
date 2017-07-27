@@ -41,6 +41,6 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_Profile_clicked()
 {
     wskQb->closeDB();
-    form = new Profile(0,ui->lE_Login->text());
+    form = new Profile();
     form->show();
 }

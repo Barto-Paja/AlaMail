@@ -18,6 +18,9 @@ public:
 
    void setLogin(QString login);
    QString getLogin();
+   bool isUserExist(QString nLogin);
+
+   void updateUser();
 
    void closeDB();
 
@@ -25,7 +28,7 @@ private:
     QSqlDatabase db;
     QSqlQuery *query;
 
-    QString vLogin;
+    static QString vLogin;
 };
 
 #endif // QUERYBANK_H

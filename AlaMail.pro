@@ -16,14 +16,17 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     querybank.cpp \
-    profile.cpp
+    profile.cpp \
+    myclasswin.cpp
 
 HEADERS  += mainwindow.h \
     querybank.h \
-    profile.h
+    profile.h \
+    myclasswin.h
 
 FORMS    += mainwindow.ui \
-    profile.ui
+    profile.ui \
+    myclasswin.ui
 
 RESOURCES += \
     zasoby.qrc

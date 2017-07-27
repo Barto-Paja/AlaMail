@@ -2,6 +2,10 @@
 
 #include <QMessageBox>
 
+#include <iostream>
+
+QString QueryBank::vLogin = NULL;
+
 QueryBank::QueryBank()
 {
 
@@ -9,10 +13,11 @@ QueryBank::QueryBank()
 
 QueryBank::~QueryBank()
 {
-    query->clear();
-    delete query;
-    db.close();
-    db = QSqlDatabase();
+    if(db.isOpen())
+    {
+        db.close();
+        db = QSqlDatabase();
+    }
     db.removeDatabase("db");
 }
 
@@ -21,7 +26,6 @@ bool QueryBank::isOpen()
     if(!db.isOpen())
     {
         db = QSqlDatabase::addDatabase("QOCI","db");
-        //db = QSqlDatabase::database("db");
         db.setHostName("localhost");
         db.setDatabaseName("XE");
         db.setUserName("******");
@@ -86,12 +90,37 @@ QString QueryBank::getLogin()
     return vLogin;
 }
 
+bool QueryBank::isUserExist(QString nLogin)
+{
+    query->prepare("SELECT USERNAME FROM USERS_ALAMAIL WHERE USERNAME = '"+nLogin+"'");
+    query->exec();
+
+    if(vLogin==nLogin)
+    {
+        return false;
+    }
+    else if(query->next())
+    {
+        if(query->value(0).toString().isNull())
+            return true;
+    }
+    else
+        return false;
+
+}
+
+void QueryBank::updateUser()
+{
+
+}
+
 void QueryBank::closeDB()
 {
-    query->clear();
-    delete query;
-    db.close();
-    db = QSqlDatabase();
+    if(db.isOpen())
+    {
+        db.close();
+        db = QSqlDatabase();
+    }
     db.removeDatabase("db");
 }
 
