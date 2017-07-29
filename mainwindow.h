@@ -7,6 +7,7 @@
 #include "mainwindow.h"
 #include "querybank.h"
 #include "profile.h"
+#include "myclasswin.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,11 +26,14 @@ private slots:
     void on_pushButton_clicked();
     void on_Profile_clicked();
 
+    void on_My_class_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     QueryBank *wskQb;
     Profile *form;
+    MyClassWin *form2;
 };
 
 #endif // MAINWINDOW_H

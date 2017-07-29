@@ -18,12 +18,10 @@ public:
     explicit Profile(QWidget *parent = 0);
     ~Profile();
 
-    void LoadProfile();
-
 private slots:
     void on_Edit_clicked();
-
     void on_Save_clicked();
+    void on_Close_clicked();
 
 private:
 
@@ -31,6 +29,7 @@ private:
     QString vLogin;
     QueryBank *wskQb;
 
+    void LoadProfile();
     bool formularControl();
 };
 

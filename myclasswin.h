@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "querybank.h"
+
 namespace Ui {
 class MyClassWin;
 }
@@ -15,8 +17,18 @@ public:
     explicit MyClassWin(QWidget *parent = 0);
     ~MyClassWin();
 
+private slots:
+
+    void recordSelected();
+
 private:
     Ui::MyClassWin *ui;
+    QueryBank *wskQb;
+    QSqlQueryModel *Qmodel;
+
+    QModelIndex index;
+
+    void LoadClass();
 };
 
 #endif // MYCLASSWIN_H

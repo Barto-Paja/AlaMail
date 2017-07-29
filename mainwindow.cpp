@@ -34,6 +34,8 @@ void MainWindow::on_pushButton_clicked()
         ui->lLogin->setText(wskQb->userInfo(4));
 
         ui->Profile->setEnabled(true);
+        ui->My_class->setEnabled(true);
+        ui->Timetable->setEnabled(true);
     }
 
 }
@@ -43,4 +45,11 @@ void MainWindow::on_Profile_clicked()
     wskQb->closeDB();
     form = new Profile();
     form->show();
+}
+
+void MainWindow::on_My_class_clicked()
+{
+    wskQb->closeDB();
+    form2 = new MyClassWin();
+    form2->show();
 }

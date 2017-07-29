@@ -28,8 +28,8 @@ bool QueryBank::isOpen()
         db = QSqlDatabase::addDatabase("QOCI","db");
         db.setHostName("localhost");
         db.setDatabaseName("XE");
-        db.setUserName("******");
-        db.setPassword("******");
+        db.setUserName("system");
+        db.setPassword("SYSTEM");
     }
 
     query = new QSqlQuery(db);
@@ -85,7 +85,7 @@ void QueryBank::setLogin(QString login)
     vLogin = login;
 }
 
-QString QueryBank::getLogin()
+QString QueryBank::getLogin() const
 {
     return vLogin;
 }
@@ -109,9 +109,21 @@ bool QueryBank::isUserExist(QString nLogin)
 
 }
 
-void QueryBank::updateUser()
+void QueryBank::updateUser(QString pEmail, QString pLogin, QString pName, QString pSurname)
 {
+    query->prepare("UPDATE USERS_ALAMAIL SET EMAIL ='"+pEmail+"' WHERE USERNAME ='"+vLogin+"'");
+    query->exec();
 
+    query->prepare("UPDATE USERS_ALAMAIL SET NAZWISKO ='"+pName+"' WHERE USERNAME ='"+vLogin+"'");
+    query->exec();
+
+    query->prepare("UPDATE USERS_ALAMAIL SET IMIE ='"+pSurname+"' WHERE USERNAME ='"+vLogin+"'");
+    query->exec();
+
+    query->prepare("UPDATE USERS_ALAMAIL SET USERNAME ='"+pLogin+"' WHERE USERNAME ='"+vLogin+"'");
+    query->exec();
+
+    vLogin = pLogin;
 }
 
 void QueryBank::closeDB()
@@ -122,6 +134,17 @@ void QueryBank::closeDB()
         db = QSqlDatabase();
     }
     db.removeDatabase("db");
+}
+
+void QueryBank::setQModel(QSqlQueryModel& qmodel)
+{
+    qmodel.setQuery(*query);
+}
+
+void QueryBank::loadMyClass()
+{
+    query->prepare("SELECT NAZWISKO, IMIE, ID_UCZNIA FROM UCZNIOWIE ORDER BY NAZWISKO");
+    query->exec();
 }
 
 

@@ -38,11 +38,18 @@ void Profile::on_Save_clicked()
 {
     if(formularControl())
     {
-
+        wskQb->updateUser(ui->lE_email->text(),ui->lE_username->text(),ui->lE_name->text(),ui->lE_surname->text());
+        QMessageBox::information(0,"Zmiana danych w profilu","Zmiana informacji przebiegła pomyślnie");
+        ui->lE_email->setEnabled(false);
+        ui->lE_name->setEnabled(false);
+        ui->lE_surname->setEnabled(false);
+        ui->lE_username->setEnabled(false);
+        ui->Save->setEnabled(false);
+        LoadProfile();
     }
     else
     {
-
+        QMessageBox::information(0,"Zmiana danych w profilu","Zmiana informacji nie przebiegła pomyślnie");
     }
 }
 
@@ -73,7 +80,7 @@ bool Profile::formularControl()
         QMessageBox::warning(0,"Błąd formularza","Podaj swoje imię");
         return false;
     }
-    else if(ui->lE_name->text().length()>0)
+    else if(ui->lE_name->text().length()<=0)
     {
         QMessageBox::warning(0,"Błąd formularza","Podaj swoje nazwisko");
         return false;
@@ -82,5 +89,13 @@ bool Profile::formularControl()
 
 }
 
-
-
+void Profile::on_Close_clicked()
+{
+    ui->lE_email->setEnabled(false);
+    ui->lE_name->setEnabled(false);
+    ui->lE_surname->setEnabled(false);
+    ui->lE_username->setEnabled(false);
+    ui->Save->setEnabled(false);
+    LoadProfile();
+    this->close();
+}

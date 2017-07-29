@@ -3,6 +3,8 @@
 
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QSqlTableModel>
+
 #include <QString>
 
 class QueryBank
@@ -17,16 +19,23 @@ public:
    QString userInfo(int value);
 
    void setLogin(QString login);
-   QString getLogin();
-   bool isUserExist(QString nLogin);
+   QString getLogin() const;
 
-   void updateUser();
+   bool isUserExist(QString nLogin);
+   void updateUser(QString pEmail, QString pLogin, QString pName, QString pSurname);
 
    void closeDB();
+
+   void setQModel(QSqlQueryModel& qmodel);
+
+   void loadMyClass();
 
 private:
     QSqlDatabase db;
     QSqlQuery *query;
+//    QSqlRecord record;
+//    QSqlQueryModel q_model;
+//    QSqlTableModel *t_model;
 
     static QString vLogin;
 };
