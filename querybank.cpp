@@ -69,8 +69,8 @@ QString QueryBank::userInfo(int value)
 
     if(db.isOpen()){
 
-    query->prepare("SELECT * FROM USERS_ALAMAIL WHERE USERNAME = '"+vLogin+"'");
-    query->exec();
+        query->prepare("SELECT * FROM USERS_ALAMAIL WHERE USERNAME = '"+vLogin+"'");
+        query->exec();
     if(query->next())
     {
         QString result = query->value(value).toString();
@@ -145,6 +145,18 @@ void QueryBank::loadMyClass()
 {
     query->prepare("SELECT NAZWISKO, IMIE, ID_UCZNIA FROM UCZNIOWIE ORDER BY NAZWISKO");
     query->exec();
+}
+
+QString QueryBank::seletedRecord(int i, int v)
+{
+    query->prepare("SELECT * FROM UCZNIOWIE WHERE ID_UCZNIA ='"+QString::number(i)+"'");
+    query->exec();
+    if(query->next())
+    {
+        QString result = query->value(v).toString();
+        return result;
+    }
+
 }
 
 

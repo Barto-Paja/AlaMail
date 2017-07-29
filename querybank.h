@@ -29,6 +29,7 @@ public:
    void setQModel(QSqlQueryModel& qmodel);
 
    void loadMyClass();
+   QString seletedRecord(int i, int v);
 
 private:
     QSqlDatabase db;
