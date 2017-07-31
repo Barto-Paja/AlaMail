@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "querybank.h"
+#include "formstudents.h"
 
 namespace Ui {
 class MyClassWin;
@@ -21,10 +22,14 @@ private slots:
 
     void recordSelected();
 
+    void on_actionUczniowie_triggered();
+
 private:
     Ui::MyClassWin *ui;
     QueryBank *wskQb;
     QSqlQueryModel *Qmodel;
+
+    FormStudents *formFS;
 
     QModelIndex index;
 

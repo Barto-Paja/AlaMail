@@ -33,7 +33,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Klasa</string>
+        <string>Grupa</string>
        </property>
       </widget>
      </item>
@@ -82,7 +82,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -132,7 +132,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -229,7 +229,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -242,7 +242,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -255,7 +255,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -268,7 +268,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -281,7 +281,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -294,7 +294,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -307,7 +307,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -336,8 +336,50 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAdministracja">
+    <property name="title">
+     <string>Administracja</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuKartoteki">
+    <property name="title">
+     <string>Kartoteki</string>
+    </property>
+    <addaction name="actionUczniowie"/>
+    <addaction name="actionNauczyciele"/>
+    <addaction name="actionGrupy"/>
+   </widget>
+   <widget class="QMenu" name="menuMoja_grupa">
+    <property name="title">
+     <string>Moja grupa</string>
+    </property>
+    <addaction name="actionLista_obesno_ci"/>
+   </widget>
+   <addaction name="menuAdministracja"/>
+   <addaction name="menuKartoteki"/>
+   <addaction name="menuMoja_grupa"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionUczniowie">
+   <property name="text">
+    <string>Uczniowie</string>
+   </property>
+  </action>
+  <action name="actionNauczyciele">
+   <property name="text">
+    <string>Nauczyciele</string>
+   </property>
+  </action>
+  <action name="actionGrupy">
+   <property name="text">
+    <string>Grupy</string>
+   </property>
+  </action>
+  <action name="actionLista_obesno_ci">
+   <property name="text">
+    <string>Lista obesności</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

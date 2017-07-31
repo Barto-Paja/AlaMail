@@ -29,7 +29,11 @@ public:
    void setQModel(QSqlQueryModel& qmodel);
 
    void loadMyClass();
-   QString seletedRecord(int i, int v);
+   QString selectedRecord(int i, int v);
+
+   void loadStudents();
+   void groupNames();
+   bool getGroupName(QString &stream);
 
 private:
     QSqlDatabase db;

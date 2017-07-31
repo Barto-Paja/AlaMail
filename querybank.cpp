@@ -143,11 +143,17 @@ void QueryBank::setQModel(QSqlQueryModel& qmodel)
 
 void QueryBank::loadMyClass()
 {
-    query->prepare("SELECT NAZWISKO, IMIE, ID_UCZNIA FROM UCZNIOWIE ORDER BY NAZWISKO");
+    int id;
+    query->prepare("SELECT ID FROM USERS_ALAMAIL WHERE USERNAME = '"+vLogin+"'");
+    query->exec();
+    if(query->next())
+        id=query->value(0).toInt();
+
+    query->prepare("SELECT NAZWISKO, IMIE, ID_UCZNIA FROM UCZNIOWIE INNER JOIN GRUPY ON UCZNIOWIE.ID_GRUPY = GRUPY.ID_GRUPY WHERE GRUPY.ID_PRACOWNIKA ='"+QString::number(id)+"' ORDER BY NAZWISKO ");
     query->exec();
 }
 
-QString QueryBank::seletedRecord(int i, int v)
+QString QueryBank::selectedRecord(int i, int v)
 {
     query->prepare("SELECT * FROM UCZNIOWIE WHERE ID_UCZNIA ='"+QString::number(i)+"'");
     query->exec();
@@ -157,6 +163,32 @@ QString QueryBank::seletedRecord(int i, int v)
         return result;
     }
 
+}
+
+void QueryBank::loadStudents()
+{
+    query->prepare("SELECT IMIE,NAZWISKO,MIASTO,ULICA,KOD_POCZTOWY,IMIE_MATKI,TELEFON_MATKI,IMIE_OJCA,TELEFON_OJCA, GRUPY.NAZWA_GRUPY, UCZNIOWIE.ID_UCZNIA, GRUPY.ID_GRUPY FROM UCZNIOWIE INNER JOIN GRUPY ON UCZNIOWIE.ID_GRUPY = GRUPY.ID_GRUPY");
+    query->exec();
+}
+
+void QueryBank::groupNames()
+{
+    query->prepare("SELECT GRUPY.NAZWA_GRUPY FROM GRUPY");
+    query->exec();
+
+}
+
+bool QueryBank::getGroupName(QString& stream)
+{
+    if(query->next())
+    {
+       stream = query->value(0).toString();
+       return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 

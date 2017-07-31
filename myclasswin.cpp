@@ -9,7 +9,6 @@ MyClassWin::MyClassWin(QWidget *parent) :
     wskQb = new QueryBank;
     Qmodel = new QSqlQueryModel;
 
-    wskQb->isOpen();
     LoadClass();
 
     connect(ui->tableView, SIGNAL(clicked(const QModelIndex&)), this, SLOT(recordSelected()));
@@ -22,6 +21,7 @@ MyClassWin::~MyClassWin()
 
 void MyClassWin::LoadClass()
 {
+    wskQb->isOpen();
     wskQb->loadMyClass();
     wskQb->setQModel(*Qmodel);
 
@@ -35,17 +35,25 @@ void MyClassWin::LoadClass()
 
 void MyClassWin::recordSelected()
 {
+    wskQb->isOpen();
     index = ui->tableView->currentIndex();
     int i = index.sibling(index.row(),2).data().toInt();
 
-    ui->label_surname->setText(wskQb->seletedRecord(i,1));
-    ui->label_name->setText(wskQb->seletedRecord(i,2));
-    ui->label_city->setText(wskQb->seletedRecord(i,3));
-    ui->label_street->setText(wskQb->seletedRecord(i,4));
-    ui->label_postcode->setText(wskQb->seletedRecord(i,5));
-    ui->label_mothername->setText(wskQb->seletedRecord(i,6));
-    ui->label_phoneM->setText(wskQb->seletedRecord(i,7));
-    ui->label_fathername->setText(wskQb->seletedRecord(i,8));
-    ui->label_phoneF->setText(wskQb->seletedRecord(i,9));
+    ui->label_surname->setText(wskQb->selectedRecord(i,1));
+    ui->label_name->setText(wskQb->selectedRecord(i,2));
+    ui->label_city->setText(wskQb->selectedRecord(i,3));
+    ui->label_street->setText(wskQb->selectedRecord(i,4));
+    ui->label_postcode->setText(wskQb->selectedRecord(i,5));
+    ui->label_mothername->setText(wskQb->selectedRecord(i,6));
+    ui->label_phoneM->setText(wskQb->selectedRecord(i,7));
+    ui->label_fathername->setText(wskQb->selectedRecord(i,8));
+    ui->label_phoneF->setText(wskQb->selectedRecord(i,9));
 
+}
+
+void MyClassWin::on_actionUczniowie_triggered()
+{
+    wskQb->closeDB();
+    formFS = new FormStudents;
+    formFS->show();
 }

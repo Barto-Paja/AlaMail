@@ -17,16 +17,19 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     querybank.cpp \
     profile.cpp \
-    myclasswin.cpp
+    myclasswin.cpp \
+    formstudents.cpp
 
 HEADERS  += mainwindow.h \
     querybank.h \
     profile.h \
-    myclasswin.h
+    myclasswin.h \
+    formstudents.h
 
 FORMS    += mainwindow.ui \
     profile.ui \
-    myclasswin.ui
+    myclasswin.ui \
+    formstudents.ui
 
 RESOURCES += \
     zasoby.qrc
