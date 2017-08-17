@@ -6,5 +6,13 @@
         <file>icons/studensedit.png</file>
         <file>icons/right-tick.png</file>
         <file>icons/gross-dark-cross.png</file>
+        <file>icons/update-arrow.png</file>
+        <file>icons/addgroups.png</file>
+        <file>icons/delgroups.png</file>
+        <file>icons/editgroups.png</file>
+        <file>icons/addteacher.png</file>
+        <file>icons/delteacher.png</file>
+        <file>icons/editteacher.png</file>
+        <file>icons/magnifier-with-an-eye.png</file>
     </qresource>
 </RCC>

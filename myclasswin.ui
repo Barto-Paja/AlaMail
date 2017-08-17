@@ -340,6 +340,13 @@
     <property name="title">
      <string>Administracja</string>
     </property>
+    <widget class="QMenu" name="menuU_ytkownicy">
+     <property name="title">
+      <string>Użytkownicy</string>
+     </property>
+     <addaction name="actionNadawanie_uprawnie"/>
+    </widget>
+    <addaction name="menuU_ytkownicy"/>
    </widget>
    <widget class="QMenu" name="menuKartoteki">
     <property name="title">
@@ -348,6 +355,8 @@
     <addaction name="actionUczniowie"/>
     <addaction name="actionNauczyciele"/>
     <addaction name="actionGrupy"/>
+    <addaction name="separator"/>
+    <addaction name="actionPrzedmioty"/>
    </widget>
    <widget class="QMenu" name="menuMoja_grupa">
     <property name="title">
@@ -366,6 +375,9 @@
    </property>
   </action>
   <action name="actionNauczyciele">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Nauczyciele</string>
    </property>
@@ -376,8 +388,24 @@
    </property>
   </action>
   <action name="actionLista_obesno_ci">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Lista obesności</string>
+   </property>
+  </action>
+  <action name="actionPrzedmioty">
+   <property name="text">
+    <string>Przedmioty</string>
+   </property>
+  </action>
+  <action name="actionNadawanie_uprawnie">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Nadawanie uprawnień</string>
    </property>
   </action>
  </widget>

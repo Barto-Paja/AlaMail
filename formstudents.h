@@ -2,6 +2,7 @@
 #define FORMSTUDENTS_H
 
 #include <QDialog>
+#include <QMessageBox>
 
 #include "querybank.h"
 
@@ -22,6 +23,16 @@ private slots:
 
     void on_button_editStudent_clicked();
 
+    void on_button_Confirm_clicked();
+
+    void on_button_addStudent_clicked();
+
+    void on_button_Canel_clicked();
+
+    void on_button_deleteStudent_clicked();
+
+    void on_button_Update_clicked();
+
 private:
     Ui::FormStudents *ui;
 
@@ -29,6 +40,31 @@ private:
     QSqlQueryModel *qmodel;
 
     QModelIndex index;
+
+    bool formControl();
+    void loadCombobox();
+    void clearLE();
+    void enableAlllE();
+    void disableAlllE();
+
+    bool anyChanges();
+    void refreshTable();
+
+    //Private variables for Line_Edit formular
+
+    QString surname = NULL;
+    QString name = NULL;
+    QString city = NULL;
+    QString street = NULL;
+    QString postcode = NULL;
+    QString snameM = NULL;
+    QString phoneM = NULL;
+    QString snameF = NULL;
+    QString phoneF = NULL;
+    int groupIndex = -1;
+
+    void setVariablesF();
+
 };
 
 #endif // FORMSTUDENTS_H

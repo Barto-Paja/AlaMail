@@ -30,7 +30,8 @@ private:
     QueryBank *wskQb;
 
     void LoadProfile();
-    bool formularControl();
+    bool formControl();
+    void loadCombobox();
 };
 
 #endif // PROFILE_H

@@ -30,12 +30,36 @@ void MainWindow::on_pushButton_clicked()
     {
         ui->statusBar->showMessage("Zalogowano pomyślnie!");
 
-        ui->statusBar->showMessage(wskQb->getLogin());
-        ui->lLogin->setText(wskQb->userInfo(4));
-
         ui->Profile->setEnabled(true);
         ui->My_class->setEnabled(true);
         ui->Timetable->setEnabled(true);
+
+        if(wskQb->isAdmin())
+        {
+            ui->label_2->setText("Administrator");
+        }
+        else if(wskQb->isModer())
+        {
+            ui->label_2->setText("Moderator");
+        }
+        else if(wskQb->isBanned())
+        {
+            QMessageBox::information(0,"Konto","Konto prewencyjnie zablokowane! \n Skontaktuj się z Moderatorem Bazy lub Administratorem Bazy w celu wyjaśnienia i odblokowania");
+            ui->label_2->setText("<font color='red'> Zablokowane!</font>");
+            ui->Profile->setEnabled(false);
+            ui->My_class->setEnabled(false);
+            ui->Timetable->setEnabled(false);
+            //wskQb->closeDB();
+        }
+        else
+        {
+            ui->label_2->setText("Użytkownik");
+
+        }
+    }
+    else
+    {
+        ui->statusBar->showMessage("Niepoprawny login lub hasło");
     }
 
 }

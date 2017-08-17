@@ -19,7 +19,7 @@
      <x>10</x>
      <y>10</y>
      <width>251</width>
-     <height>241</height>
+     <height>161</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -27,6 +27,13 @@
      <widget class="QLabel" name="label_3">
       <property name="text">
        <string>Imię</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Email</string>
       </property>
      </widget>
     </item>
@@ -44,6 +51,13 @@
       </property>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Nazwa użytkownia</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="1">
      <widget class="QLineEdit" name="lE_username">
       <property name="enabled">
@@ -57,36 +71,15 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Email</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Nazwa użytkownia</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>Przedmioty, kursy</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lE_email">
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lE_surname">
       <property name="enabled">
        <bool>false</bool>
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="lE_surname">
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lE_email">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -101,13 +94,6 @@
     </item>
     <item row="4" column="1">
      <widget class="QComboBox" name="comboBox">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QTableView" name="tableView">
       <property name="enabled">
        <bool>false</bool>
       </property>

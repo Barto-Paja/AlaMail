@@ -29,43 +29,10 @@
      <x>10</x>
      <y>280</y>
      <width>761</width>
-     <height>51</height>
+     <height>52</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
-     <widget class="QPushButton" name="button_editStudent">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Edytuj</string>
-      </property>
-      <property name="icon">
-       <iconset resource="zasoby.qrc">
-        <normaloff>:/z/icons/studensedit.png</normaloff>:/z/icons/studensedit.png</iconset>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="5">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
     <item row="0" column="2">
      <widget class="QPushButton" name="button_deleteStudent">
       <property name="enabled">
@@ -86,6 +53,26 @@
       </property>
      </widget>
     </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="button_editStudent">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Edytuj</string>
+      </property>
+      <property name="icon">
+       <iconset resource="zasoby.qrc">
+        <normaloff>:/z/icons/studensedit.png</normaloff>:/z/icons/studensedit.png</iconset>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="0">
      <widget class="QPushButton" name="button_addStudent">
       <property name="sizePolicy">
@@ -103,17 +90,6 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="3">
-     <widget class="QPushButton" name="button_Confirm">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="zasoby.qrc">
-        <normaloff>:/z/icons/right-tick.png</normaloff>:/z/icons/right-tick.png</iconset>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="4">
      <widget class="QPushButton" name="button_Canel">
       <property name="enabled">
@@ -127,6 +103,47 @@
         <normaloff>:/z/icons/gross-dark-cross.png</normaloff>:/z/icons/gross-dark-cross.png</iconset>
       </property>
      </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="button_Confirm">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="zasoby.qrc">
+        <normaloff>:/z/icons/right-tick.png</normaloff>:/z/icons/right-tick.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QPushButton" name="button_Update">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="zasoby.qrc">
+        <normaloff>:/z/icons/update-arrow.png</normaloff>:/z/icons/update-arrow.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="6">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
    </layout>
   </widget>
@@ -165,12 +182,18 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wpisz ulicę miejsca zamieszkania ucznia, jeżeli w adresie nie ma nazwy ulicy wystarczy wpisać numer budynku&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </item>
     <item row="1" column="1">
      <widget class="QLineEdit" name="lE_name">
       <property name="enabled">
        <bool>false</bool>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wprowadź nazwisko ucznia&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
@@ -229,6 +252,9 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wprowadź kod pocztowy w formacie XX-XXX, np. 01-444&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </item>
     <item row="2" column="0">
@@ -246,6 +272,9 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wprowadź miasto ucznia&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </item>
     <item row="4" column="0">
@@ -262,6 +291,9 @@
      <widget class="QLineEdit" name="lE_surname">
       <property name="enabled">
        <bool>false</bool>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wprowadź imię ucznia, co najmniej 4 znaki&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
@@ -296,12 +328,18 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wprowadź imię matki ucznia, co najmniej 4 znaki&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </item>
     <item row="1" column="4">
      <widget class="QLineEdit" name="lE_phoneM">
       <property name="enabled">
        <bool>false</bool>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Podaj numer telefonu dla stacjonarnych np.: 236701122 dla komórkowych 999888777&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
@@ -310,6 +348,9 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wprowadź imię ojca ucznia, co najmniej 4 znaki&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </item>
     <item row="3" column="4">
@@ -317,14 +358,42 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Podaj numer telefonu dla stacjonarnych np.: 236701122 dla komórkowych 999888777&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </item>
     <item row="4" column="4">
-     <widget class="QComboBox" name="comboBox"/>
+     <widget class="QComboBox" name="comboBox">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wybierz grupę, do której będzie należał uczeń&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lE_surname</tabstop>
+  <tabstop>lE_name</tabstop>
+  <tabstop>lE_city</tabstop>
+  <tabstop>lE_street</tabstop>
+  <tabstop>lE_postcode</tabstop>
+  <tabstop>lE_snameM</tabstop>
+  <tabstop>lE_phoneM</tabstop>
+  <tabstop>lE_snameF</tabstop>
+  <tabstop>lE_phoneF</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>button_Confirm</tabstop>
+  <tabstop>button_addStudent</tabstop>
+  <tabstop>button_editStudent</tabstop>
+  <tabstop>tableView</tabstop>
+  <tabstop>button_deleteStudent</tabstop>
+  <tabstop>button_Canel</tabstop>
+ </tabstops>
  <resources>
   <include location="zasoby.qrc"/>
  </resources>
